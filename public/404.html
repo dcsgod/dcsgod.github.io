@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravi Kumar — Data Scientist</title>
+    <script>
+      // Single Page App redirect for GitHub Pages HashRouter
+      const path = window.location.pathname;
+      const search = window.location.search || '';
+      const hash = window.location.hash || '';
+      // If visiting a subpath directly (e.g. /work), redirect to /#/work
+      if (path && path !== '/') {
+        window.location.replace('/#' + path + search + hash);
+      } else {
+        window.location.replace('/' + search + hash);
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/">Ravi Kumar's Portfolio</a>...</p>
+  </body>
+</html>
