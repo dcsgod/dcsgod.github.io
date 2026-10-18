@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node -e \"require('fs').copyFileSync('index.source.html', 'index.html')\" && vite",
-    "build": "node -e \"require('fs').copyFileSync('index.source.html', 'index.html')\" && tsc -b && vite build && node -e \"require('fs').cpSync('dist/assets', 'assets', {recursive: true}); require('fs').copyFileSync('dist/index.html', 'index.html')\"",
+    "build": "node -e \"require('fs').copyFileSync('index.source.html', 'index.html')\" && tsc -b && vite build && node -e \"require('fs').rmSync('assets', {recursive: true, force: true}); require('fs').cpSync('dist/assets', 'assets', {recursive: true}); require('fs').copyFileSync('dist/index.html', 'index.html')\"",
     "lint": "oxlint",
     "preview": "vite preview"
   },
