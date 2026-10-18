@@ -1,71 +1,105 @@
+import { Link } from 'react-router-dom'
 import { NOW_CONTENT } from '../content/now'
 
 export function NowPage() {
   return (
     <>
-      <div className="page-header">
-        <div className="container">
-          <p className="page-eyebrow">Now — {NOW_CONTENT.lastUpdated}</p>
-          <h1 className="page-title">What I'm<br />Working On</h1>
-          <p className="page-desc">
-            A snapshot of current focus. Updated manually — no automated "active" labels
-            without a human confirming the status.
-          </p>
-        </div>
+      <div className="page-hero">
+        <p className="page-hero__label">Now — Updated {NOW_CONTENT.lastUpdated}</p>
+        <h1 className="page-hero__title">What I'm Working On.</h1>
+        <p className="page-hero__desc">
+          A real-time snapshot of my active priorities, engineering focus, and research explorations.
+          Inspired by Derek Sivers' /now page movement.
+        </p>
       </div>
 
-      <div className="page-content" style={{ maxWidth: 760 }}>
-        <div style={{ display: 'flex', gap: 'var(--sp-4)', flexWrap: 'wrap', marginBottom: 'var(--sp-8)' }}>
-          {[
-            { label: 'Location', value: NOW_CONTENT.location },
-            { label: 'Current Role', value: NOW_CONTENT.currentRole },
-            { label: 'Last Updated', value: NOW_CONTENT.lastUpdated },
-          ].map(({ label, value }) => (
-            <div key={label} style={{ padding: 'var(--sp-4)', border: '1px solid var(--q-border)', borderRadius: 8, flex: 1, minWidth: 200 }}>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--q-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{label}</p>
-              <p style={{ fontFamily: 'var(--font-tech)', fontSize: '0.9rem', color: 'var(--q-text)' }}>{value}</p>
+      <div className="now-grid">
+        {/* Left Sidebar */}
+        <aside className="now-sidebar">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <div>
+              <p className="now-stat-box__label">Location</p>
+              <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--black)' }}>
+                {NOW_CONTENT.location}
+              </p>
             </div>
-          ))}
-        </div>
 
-        <div className="cs-section reveal">
-          <h2 className="cs-section-title">
-            <span className="cs-section-num">FOCUS</span>
-            Current Focus
-          </h2>
-          <ul className="cs-list">
-            {NOW_CONTENT.focus.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+            <div style={{ borderTop: '1px solid var(--gray-6)', paddingTop: 20 }}>
+              <p className="now-stat-box__label">Current Role</p>
+              <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--black)', lineHeight: 1.4 }}>
+                {NOW_CONTENT.currentRole}
+              </p>
+            </div>
 
-        <div className="cs-section reveal">
-          <h2 className="cs-section-title">
-            <span className="cs-section-num">READ</span>
-            Currently Reading / Investigating
-          </h2>
-          <ul className="cs-list">
-            {NOW_CONTENT.reading.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+            <div style={{ borderTop: '1px solid var(--gray-6)', paddingTop: 20 }}>
+              <p className="now-stat-box__label">Status</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4 }}>
+                <span className="status-indicator" />
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--black)' }}>
+                  Active & Building
+                </span>
+              </div>
+            </div>
 
-        <div className="cs-section reveal">
-          <h2 className="cs-section-title">
-            <span className="cs-section-num">OPEN</span>
-            Open To
-          </h2>
-          <ul className="cs-list">
-            {NOW_CONTENT.openTo.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+            <div style={{ borderTop: '1px solid var(--gray-6)', paddingTop: 20 }}>
+              <p className="now-stat-box__label">Last Confirmed</p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--gray-3)', fontFamily: 'var(--mono)' }}>
+                {NOW_CONTENT.lastUpdated}
+              </p>
+            </div>
 
-        <div style={{ padding: 'var(--sp-4)', background: 'rgba(99,102,241,0.04)', border: '1px solid var(--q-border)', borderRadius: 8 }}>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--q-muted)', lineHeight: 1.6 }}>
-            To update this page: edit{' '}
-            <code style={{ color: 'var(--q-accent)', background: 'rgba(99,102,241,0.1)', padding: '0.1rem 0.4rem', borderRadius: 3 }}>
-              src/content/now.ts
-            </code>{' '}
-            — no layout changes required. Inspired by nownownow.com.
-          </p>
+            <div style={{ borderTop: '1px solid var(--gray-6)', paddingTop: 24 }}>
+              <Link to="/contact" className="hero__cta" style={{ width: '100%', justifyContent: 'center' }}>
+                Contact Me →
+              </Link>
+            </div>
+          </div>
+        </aside>
+
+        {/* Right Content */}
+        <div className="now-body">
+          {/* Block 01: Current Focus */}
+          <div>
+            <h2 className="now-block__heading">
+              01 · Current Engineering & Research Focus
+            </h2>
+            <ul className="now-block__list">
+              {NOW_CONTENT.focus.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Block 02: Reading Stack */}
+          <div>
+            <h2 className="now-block__heading">
+              02 · Currently Reading & Investigating
+            </h2>
+            <ul className="now-block__list">
+              {NOW_CONTENT.reading.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Block 03: Open To */}
+          <div>
+            <h2 className="now-block__heading">
+              03 · Open To & Collaborations
+            </h2>
+            <ul className="now-block__list">
+              {NOW_CONTENT.openTo.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div style={{ padding: '24px', background: 'var(--gray-8)', border: '1px solid var(--gray-6)', borderRadius: '8px' }}>
+            <p style={{ fontSize: '0.8rem', color: 'var(--gray-3)', lineHeight: 1.6 }}>
+              This page is maintained manually to give collaborators and peers a transparent window into my active queue.
+              To suggest a discussion or collaboration, feel free to reach out directly.
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -28,35 +28,27 @@ export function HomePage() {
       {/* ════════════════════════════════════════════
           HERO — FULL SCREEN
           ════════════════════════════════════════════ */}
+      {/* ════════════════════════════════════════════
+          HERO — BOLD EDITORIAL WITH PROMINENT PORTRAIT BESIDE NAME
+          ════════════════════════════════════════════ */}
       <section className="hero" aria-labelledby="hero-name">
-        <div className="hero__main">
-          <p className="hero__role">Data Scientist · AI/ML Engineer · IIT Patna M.Tech</p>
+        <div className="hero__container">
+          <div className="hero__content">
+            <div className="hero__role-badge">
+              <span className="hero__role-dot" />
+              <p className="hero__role">Data Scientist · AI/ML Engineer · IIT Patna M.Tech</p>
+            </div>
 
-          <h1 className="hero__name" id="hero-name">
-            Ravi<br />Kumar.
-          </h1>
+            <h1 className="hero__name" id="hero-name">
+              Ravi<br />Kumar.
+            </h1>
 
-          <div className="hero__bottom">
-            {/* Left: bio */}
             <p className="hero__desc">
               Building intelligent systems from data, models, and reasoning. I work across
               LLM applications, graph intelligence, causal inference, and production ML — with a focus
               on systems that are reliable and explainable.
             </p>
 
-            {/* Center: portrait */}
-            <div className="hero__portrait-cell">
-              <img
-                src="/images/ravi-nobg.png"
-                alt="Ravi Kumar"
-                className="hero__portrait"
-                width="120"
-                height="120"
-                loading="eager"
-              />
-            </div>
-
-            {/* Right: actions */}
             <div className="hero__actions">
               <Link to="/work" className="hero__cta">View Work →</Link>
               <a
@@ -84,6 +76,27 @@ export function HomePage() {
                 >
                   LinkedIn ↗
                 </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Prominent portrait with white bg and modern gradient aura */}
+          <div className="hero__portrait-col">
+            <div className="hero__portrait-wrapper">
+              <div className="hero__portrait-glow" aria-hidden="true" />
+              <div className="hero__portrait-frame">
+                <img
+                  src="/images/ravi-original.png"
+                  alt="Ravi Kumar — Data Scientist and AI/ML Engineer"
+                  className="hero__portrait-img"
+                  width="330"
+                  height="390"
+                  loading="eager"
+                />
+                <div className="hero__portrait-tag">
+                  <span className="status-indicator" />
+                  <span>Databricks · LLMs · Knowledge Graphs</span>
+                </div>
               </div>
             </div>
           </div>
